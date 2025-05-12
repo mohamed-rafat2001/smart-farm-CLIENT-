@@ -1,0 +1,31 @@
+@import 'tailwindcss';
+* {
+  /* margin: 0;
+  padding: 0; */
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+@layer components {
+  .nav-link {
+    transition-property: color;
+    transition-duration: 300ms;
+    &:hover {
+      color: white;
+    }
+    &:active {
+      color: white;
+    }
+  }
+  .btn {
+    transition-property: all;
+    cursor: pointer;
+    border-radius: 30px;
+    border: 1px solid gray;
+    padding: 10px 35px;
+    transition-duration: 300ms;
+    &:hover {
+      background-color: gray;
+      padding: 10px 50px;
+    }
+  }
+}
