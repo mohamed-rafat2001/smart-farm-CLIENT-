@@ -14,10 +14,10 @@ export const userByIdParam = async (id) => {
   return response.data;
 };
 // get user profile
-export const userData = async () => {
+export const getMe = async () => {
   const response = await api.get('/user');
 
-  return response.data;
+  return response.data.data;
 };
 
 // delete user by him self

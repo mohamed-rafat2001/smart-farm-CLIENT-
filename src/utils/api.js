@@ -27,6 +27,7 @@ const handleApiError = (error) => {
 };
 const api = axios.create({
   baseURL: import.meta.env.VITE_APIURL || 'http://localhost:3000/api/v1',
+  withCredentials: true,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',

@@ -1,18 +1,20 @@
-import { Outlet } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Outlet, useLocation, Navigate } from 'react-router-dom';
+
+import useAuth from '../Hooks/useAuth';
 function ProtectedLayout() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
-  const token = localStorage.getItem('token');
-  // const location = useLocation();
-  console.log(token);
-  useEffect(() => {
-    if (!token || token === null) {
-      return setIsAuthenticated(false);
-    }
-    return setIsAuthenticated(true);
-  }, [token, isAuthenticated]);
-  // if (!isAuthenticated)
-  // 	return <Navigate to="/login" state={{ from: location }} replace />;
+  const { isAuthenticated, isLoading } = useAuth();
+  const location = useLocation();
+  // Show loading spinner while checking authentication
+  if (isLoading) {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        Loading...
+      </div>
+    );
+  }
+  if (!isAuthenticated)
+    return <Navigate to="/" state={{ from: location }} replace />;
+
   return <Outlet />;
 }
 export default ProtectedLayout;

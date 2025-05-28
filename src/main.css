@@ -5,6 +5,7 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
 @layer components {
   .nav-link {
     transition-property: color;
@@ -12,20 +13,22 @@
     &:hover {
       color: white;
     }
-    &:active {
+    &.active {
       color: white;
     }
   }
-  .btn {
+  .switch-link {
     transition-property: all;
-    cursor: pointer;
-    border-radius: 30px;
-    border: 1px solid gray;
-    padding: 10px 35px;
     transition-duration: 300ms;
+    cursor: pointer;
+    border-bottom: 1.5px solid rgb(185, 185, 185);
     &:hover {
-      background-color: gray;
-      padding: 10px 50px;
+      color: rgb(101, 101, 241);
+      border-bottom: 1.5px solid blue;
+    }
+    &.active {
+      color: rgb(101, 101, 241);
+      border-bottom: 1.5px solid blue;
     }
   }
 }

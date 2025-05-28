@@ -1,41 +1,50 @@
-import { useNavigate, NavLink } from 'react-router-dom';
-import defaultProfileImg from '../assets/defaultProfileImage.jpeg';
+import { NavLink } from 'react-router-dom';
 import Button from './Button';
+import useLogOut from '../features/authentication/useLogout';
+import Logo from '../assets/logo.jpg';
 function Sidebar() {
-  const navigate = useNavigate();
+  const { isLogOut, logOutUser } = useLogOut();
+
   const handleLogOut = () => {
-    navigate('/');
+    logOutUser();
   };
   return (
-    <aside className="w-[100%] p-10 text-left font-bold text-stone-500">
-      <div className="items-left mb-10 flex flex-col">
-        <div className="mb-3 h-25 w-25">
+    <aside className="w-[100% ] h-screen pt-10 text-lg font-bold text-stone-500 capitalize">
+      <div className="mb-10 flex flex-col items-center justify-center border-b-1 border-stone-400 uppercase lg:flex-row">
+        <div className="me-2 mb-3 h-20 w-20">
           <img
-            src={defaultProfileImg}
-            className="h-[100%] w-[100%] rounded-xl border-2 border-gray-200 object-cover"
+            src={Logo}
+            className="h-[100%] w-[100%] rounded-full border-2 border-gray-200 object-cover"
           />
         </div>
-
-        <h1 className="text-xl text-white">mohamed rafat</h1>
-        <p className="text-xs">mohamed20rafat@gmail.com</p>
+        <div>
+          <h1 className="mb-2 text-white">Smart Farm</h1>
+        </div>
       </div>
-      <nav className="mb-8 flex flex-col gap-y-8">
-        <NavLink to="/app/farmsDashboard" className="nav-link">
+      <nav className="mb-8 flex flex-col items-center gap-y-8 text-start">
+        <NavLink to="/app/profile" className="nav-link sm:w-[50%]">
+          Profile
+        </NavLink>
+
+        <NavLink to="/app/farmsDashboard" className="nav-link sm:w-[50%]">
           Dashboard
         </NavLink>
 
-        <NavLink to="/app/profile" className="nav-link">
-          Profile
-        </NavLink>
-        <NavLink to="/app/farms" className="nav-link">
+        <NavLink to="/app/farms" className="nav-link sm:w-[50%]">
           Farms
         </NavLink>
-        <NavLink to="/app/settings" className="nav-link">
+        <NavLink to="/app/settings" className="nav-link sm:w-[50%]">
           Settings
         </NavLink>
       </nav>
       <div className="w-full text-center text-white">
-        <Button onClick={handleLogOut}>LogOut</Button>
+        <Button
+          backgroundcolor="gray"
+          disabled={isLogOut}
+          onClick={handleLogOut}
+        >
+          LogOut
+        </Button>
       </div>
     </aside>
   );

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const Button = styled.button`
   transition-property: all;
@@ -9,7 +9,16 @@ const Button = styled.button`
   transition-duration: 300ms;
 
   &:hover {
-    background-color: gray;
+    ${(props) =>
+      props.color &&
+      css`
+        color: ${props.color};
+      `}
+    ${(props) =>
+      props.backgroundcolor &&
+      css`
+        background-color: ${props.backgroundcolor};
+      `}
     padding: 10px 50px;
   }
 `;

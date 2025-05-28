@@ -4,16 +4,21 @@ import api from '../utils/api';
 export const signUp = async (data) => {
   const response = await api.post('/auth/signUp', data);
 
-  return response.data;
+  return response.data.data.user;
 };
 
 // response login func
 export const login = async (data) => {
   const response = await api.post('/auth/login', data);
 
+  return response.data.data.user;
+};
+// log out user
+export const logOut = async () => {
+  const response = await api.get('/auth/logOut');
+
   return response.data;
 };
-
 // forget password
 export const forgotPassword = async (data) => {
   const response = await api.post('/auth/forgotPassword', data);
