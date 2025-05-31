@@ -47,10 +47,10 @@ export const Router = createBrowserRouter([
 
   {
     path: '/app',
-    element: <ProtectedLayout />,
+    element: <AppLayout />,
     children: [
       {
-        element: <AppLayout />,
+        element: <ProtectedLayout />,
         children: [
           {
             index: true,
